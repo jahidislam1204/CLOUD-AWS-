@@ -22,7 +22,7 @@ Then click Save Rules.
 Open terminal and run:
 
 
-ssh -i test-moby-public-ec2.pem ec2-user@<Your-Public-IP>
+ssh -i test-public-ec2.pem ec2-user@<Your-Public-IP>
 
 Replace <Your-Public-IP> with the public IPv4 of your EC2 instance (from EC2 dashboard).
 
@@ -58,7 +58,7 @@ Copy code
 <html>
   <head><title>Jahid's Website</title></head>
   <body>
-    <h1>I love Jaan <TUMPA>!</h1>
+    <h1>HI! This is Jahid</h1>
   </body>
 </html>
 
