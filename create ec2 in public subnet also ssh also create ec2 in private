@@ -1,0 +1,52 @@
+🌐💻 Built My First Custom VPC on AWS — From Scratch! 🚀
+As part of my cloud journey, I decided to get hands-on with AWS networking and build a fully customized VPC setup. This experience helped me deeply understand how cloud networking works — especially how public and private networks communicate securely.
+Here's a breakdown of what I did (and what any fresher can try too! 👇):
+
+🔹 1. Created a Custom VPC
+
+Named it test-vpc
+IPv4 CIDR block: 10.0.0.0/16
+Left other settings as default
+
+🔹 2. Added Two Subnets
+
+ ✅ Public Subnet:
+Name: test-public-subnet
+CIDR: 10.0.1.0/24
+AZ: us-east-1a
+
+✅ Private Subnet:
+Name: test-private-subnet
+CIDR: 10.0.2.0/24
+AZ: us-east-1a
+
+🔹 3. Internet Gateway Setup
+Created test-igw
+Attached it to the VPC
+
+🔹 4. Public Route Table
+Name: test-public-rt
+Route: 0.0.0.0/0 → Internet Gateway
+Associated it with the public subnet
+
+🔹 5. Security Groups for EC2 Access
+ 🔐 Public SG:
+Allow SSH (port 22) from customize (your ip/28)
+🔐 Private SG:
+Allow SSH from public subnet IP range (10.0.1.0/24)
+
+🔹 6. Launched EC2 Instances
+
+ 🟢 Public EC2:
+Launched in the public subnet
+Connected via my downloaded key pair
+
+🔒 Private EC2:
+Launched in the private subnet
+Accessed securely through the public EC2 (bastion setup)
+
+🔹 7. SSH Commands I Used 🧑‍💻
+👉 Connect to Public EC2:
+
+chmod 400 your-key.pem
+ssh -i "your-key.pem" ec2-user@<Public-IP>
