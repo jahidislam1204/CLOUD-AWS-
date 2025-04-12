@@ -1,0 +1,73 @@
+✅ Create VPC and EC2 instance. 
+
+ ✅ Confirm EC2 Instance is Running
+     
+    - Go to the AWS EC2 Dashboard.
+    - Verify that your instance is in “Running” state.
+
+✅ Update Security Group to Allow HTTP Traffic
+Navigate to:
+
+EC2 → Security Groups → Your Security Group → Inbound Rules → Edit Inbound Rules.
+
+Add the following rules:
+
+Type	Protocol	Port Range	Source
+SSH	TCP	           22	        My IP
+HTTP	TCP	           80	       0.0.0.0/0
+
+Then click Save Rules.
+
+✅ SSH Into EC2 Instance
+Open terminal and run:
+
+
+ssh -i test-moby-public-ec2.pem ec2-user@<Your-Public-IP>
+
+Replace <Your-Public-IP> with the public IPv4 of your EC2 instance (from EC2 dashboard).
+
+✅ Install Apache (httpd)
+Run these commands inside the EC2 terminal:
+
+sudo yum update -y
+sudo yum install httpd -y
+
+✅ Start Apache Web Server
+
+
+sudo systemctl start httpd
+sudo systemctl enable httpd
+You can verify the status:
+
+
+sudo systemctl status httpd
+
+
+
+
+✅ Create a Web Page
+Edit the default web page:
+
+
+sudo vi /var/www/html/index.html
+
+Add some basic HTML:
+
+html
+Copy code
+<html>
+  <head><title>Jahid's Website</title></head>
+  <body>
+    <h1>I love Jaan <TUMPA>!</h1>
+  </body>
+</html>
+
+Save and exit (ESC, then type :wq and press Enter).
+
+
+✅ Test in Browser
+Open your browser.
+
+Visit: http://<Your-Public-IP>
+
+
