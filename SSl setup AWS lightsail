@@ -1,0 +1,30 @@
+SSL Setup AWS lightsail
+
+Step:01
+
+Connect to Your Instance
+
+ssh -i key.pem bitnami@public_ip
+
+step:02
+
+Install cartbot
+
+sudo apt update && sudo apt install certbot
+
+Step:03
+Run Certbot to Obtain SSL Certificate
+
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+
+Step:04
+ 
+Verify SSL Installation
+Visit https://yourdomain.com in your browser.
+
+You should see a padlock icon.
+
+Step:05
+
+add subdomain in your domain server (manually)
+sudo /opt/bitnami/bncert-tool
